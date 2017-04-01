@@ -1,0 +1,41 @@
+rails server -b $IP -p $PORT    started he server
+rails new blog                  create a new template, make sure you are at the root directory (not showing workspace)
+clear
+ls
+pwd     check current path
+cd ...  up 1 level
+rails generate controller Welcome index
+cat ~/.ssh/id_rsa.pub   ssh key, copy the whole thing, go to github in setting profile/SSH key
+git remote -v   display orogin if it list, you can remove by below (remove pointing)
+git remote rm origin
+
+database
+'rake db:migrate' if getting eror run below, 'bubdle update' then run 'bundle install' you should be fine
+
+git remote add origin git@github.com:SomwangShep/ruby.git   = make it to piont to my github
+git remote -v   make sure show 
+origin  git@github.com:SomwangShep/ruby.git (fetch)
+origin  git@github.com:SomwangShep/ruby.git (push)
+git push -u origin master   = push to git hub
+
+gomockingbird.com/mockingbird   
+
+No route matches [GET] "/home" yoy need to set route
+workspace/config/routes.rb  =1
+
+rake routes   = check route
+
+workspace/app/controller/ then create a new file call 'pages_controller.rb'
+
+-build template-
+create new folder call 'pages' in workspace/views
+then a new file call 'home.html.erb' under that
+in home file we will put HTML in there
+
+https://github.com/twbs/bootstrap-sass = bootstrap gem files
+
+all of JS and CSS are in app/assets folder
+
+views/layouts/application.html = this is the main layout 
+
+ls -a     = will show hidden file
