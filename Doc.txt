@@ -39,3 +39,8 @@ all of JS and CSS are in app/assets folder
 views/layouts/application.html = this is the main layout 
 
 ls -a     = will show hidden file
+
+.gitignore file is in workspace, add last 2 lines
+
+in application.html if too cloud we can make it partial by remove som section in to 
+app/layouts and create a new fiel call _navigation.html.erb
