@@ -118,8 +118,52 @@ rails generate migration create_chefs
 you will see '20170401145036_create_chefs' in app/db/migrate
 add below
 ---------------------------------------
-      t.string :cheftname
+      t.string :chefname
       t.string :email
-      t.timesamps
+      t.timestamps
 ------------------------------------      
 run = rake db:migrate
+create a new fiel call 'chef.rb' in app/models
+type below
+----------------------
+class Chef < ActiveRecord::Base
+end
+-----------------------
+run = rails console
+ctrl+l
+Chef.all
+Chef
+
+receip = Recipe.new
+you will see nil in each field men you hav nothing in your database
+receip.summary = "This is a spicy dish"
+if you receip.valid? you will get true
+receip.save to save the record
+
+to destroy the database
+recipes.destroy - this will dele that table
+
+
+we can do test databse in test folder by create a new file call 'recipe_test.rb' in test/models folder
+@ = instant varible if you not include it wil be local varible
+to run test
+rake test
+watch lec # 25-26
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+create relationship FK key in recipes
+rails generate migration add_chef_id_to_recipes
+you will see '20170401193614_add_chef_id_to_recipes' in db/migrat folder
+add below
+--------------------
+add_column :recipes, :chef_id, :integer
+----------------------------------
+add has_many :recipes in chef.rb
+add belongs_to :chef in recipe.rb
+
+rails console
+Chef.first
+Chef.all
+chef = Chef.create(chefname: "bob", email: "bob@example.com")
+
+chef.errors.full_messages   to cheking the error detail
