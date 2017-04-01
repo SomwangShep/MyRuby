@@ -42,5 +42,84 @@ ls -a     = will show hidden file
 
 .gitignore file is in workspace, add last 2 lines
 
-in application.html if too cloud we can make it partial by remove som section in to 
+in application.html if too busy we can make it partial by remove som section in to 
 app/layouts and create a new fiel call _navigation.html.erb
+
+-deploy to heroku in lec#17-
+
+https://learnrubythehardway.org/book/
+
+-database-
+rails generate migration create_users
+if you get error then run = bundle install
+add t. in the file 
+      t.string:username,:email
+      t.timestamps
+
+then run = rake db:migrate
+you need to create model in = blog/app/models by
+create new file call user.rb, then 2 lines below
+---------------------------------------
+class User < ActiveRecord::Base
+    has_many :articles
+end
+--------------------------------------
+in article.rb type below
+
+-------------------
+belongs_to :user
+-------------------
+
+then chec by type
+rails console
+press ctrl+l to clear out
+to testing below
+User.all
+
+User.create(username:"John", email:"john@gmail.com")
+
+create fK below
+rails generate migration add_user_id_to_articles
+you will see '20170401140503_add_user_id_to_articles' in migrate folder
+type
+-----------------------
+add_colum:articles, :user_id, :integer
+----------------------------
+run 
+rake db:migrate
+
+===========switch to workspace=======create hef to recipee relationship===========
+
+rails generate migration create_recipes
+you will see '20170401143344_create_recipes' in db/migrate
+----------------------------------
+      t.string :name
+      t.text :summary
+      t.text :description
+      t.timestamps
+----------------------------------
+rake db:migrate
+
+-create model of recipes table- below
+create a new fiel call 'recipe.rb' in app/models
+then add
+-------------------------------
+class Recipe < ActiveRecord::Base
+end
+---------------------------------
+rails console
+ctrl+l
+type Recipe inconsole you will get 'Recipe (call 'Recipe.connection' to establish a connection) '
+Recipe.all
+Recipe = you should see 'Recipe(id: integer, name: string, summary: text, description: text, created_at: datetime, updated_at: datetime)'
+
+-create chef table-
+rails generate migration create_chefs
+you will see '20170401145036_create_chefs' in app/db/migrate
+add below
+---------------------------------------
+      t.string :cheftname
+      t.string :email
+      t.timesamps
+------------------------------------      
+run = rake db:migrate
